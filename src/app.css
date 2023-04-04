@@ -1,36 +1,27 @@
 /* Variables */
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #2980b9;
-  --bg-color: #f5f5f5;
+  --bg-color: #f4f4f4;
   --text-color: #333;
-  --accent-color: #f1c40f;
-
-  --spacing-xsmall: 0.5rem;
+  --primary-color: #3e3e3e;
   --spacing-small: 1rem;
   --spacing-medium: 2rem;
-  --spacing-large: 3rem;
-  --spacing-xlarge: 4rem;
+  --spacing-large: 4rem;
+  --max-width: 1100px;
 }
 
-/* Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Global styles */
 html {
+  scroll-behavior: smooth;
   font-size: 16px;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
   background-color: var(--bg-color);
   color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -39,69 +30,51 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
-  margin-bottom: var(--spacing-medium);
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 a {
-  color: var(--text-color);
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-  color: var(--accent-color);
+  color: var(--text-color);
 }
 
 img {
-  max-width: 100%;
-  height: auto;
   display: block;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-medium);
+  width: 100%;
 }
 
 /* Utility classes */
-.text-center {
-  text-align: center;
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
-.flex {
-  display: flex;
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-medium);
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+/* Layout */
+section {
+  margin-bottom: var(--spacing-large);
 }
 
-.align-items-center {
-  align-items: center;
+/* Transitions */
+a {
+  transition: color 0.3s ease;
 }
 
-.justify-content-center {
-  justify-content: center;
-}
-
-.gap {
-  gap: var(--spacing-medium);
-}
-
-@media (max-width: 1200px) {
-  .container {
-    padding: 0 var(--spacing-small);
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --spacing-xsmall: 0.25rem;
-    --spacing-small: 0.5rem;
-    --spacing-medium: 1rem;
-    --spacing-large: 2rem;
-    --spacing-xlarge: 3rem;
-  }
+a:hover {
+  color: var(--primary-color);
 }

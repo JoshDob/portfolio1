@@ -1,74 +1,31 @@
 <script>
-  export let skillName;
-  export let skillLevel;
-  export let skillIcon;
+  export let skill;
 </script>
 
-<div class="skill-card">
-  <i class={skillIcon} />
-  <h3>{skillName}</h3>
-  <p class="level">{skillLevel}</p>
+<div class="skill-card" style="background-color: {skill.color}">
+  <img src={skill.icon} alt={skill.name} class="skill-logo" />
 </div>
 
 <style>
   .skill-card {
+    width: 100px;
+    height: 100px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 200px;
-    margin: var(--spacing-medium);
-    border-radius: 10px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease-in-out;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: var(--spacing-small);
+    transition: transform 0.3s ease;
   }
 
   .skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px);
   }
 
-  .skill-card i {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-small);
-    color: var(--primary-color);
-  }
-
-  .skill-card h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: var(--spacing-small);
-  }
-
-  .skill-card .level {
-    margin-top: var(--spacing-xsmall);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: var(--primary-color);
-  }
-
-  @media (max-width: 768px) {
-    .skill-card {
-      width: 150px;
-      height: 150px;
-    }
-
-    .skill-card i {
-      font-size: 3rem;
-    }
-
-    .skill-card h3 {
-      font-size: 1.2rem;
-    }
-
-    .skill-card .level {
-      font-size: 0.7rem;
-    }
+  .skill-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
   }
 </style>

@@ -1,35 +1,64 @@
-<!-- NavBar.svelte -->
 <script>
+  import { onMount } from "svelte";
   import Logo from "./Logo.svelte";
   import NavItem from "./NavItem.svelte";
+
+  let scrolled = false;
+
+  onMount(() => {
+    const handleScroll = () => {
+      scrolled = window.pageYOffset > 50;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 </script>
 
-<nav class="navbar">
-  <Logo text="Your Site" />
-  <ul class="nav-list">
-    <NavItem label="Home" href="#home" />
-    <NavItem label="About" href="#about" />
-    <NavItem label="Skills" href="#skills" />
-    <NavItem label="Projects" href="#projects" />
-    <NavItem label="Contact" href="#contact" />
-  </ul>
-</nav>
+<header class:scrolled>
+  <nav class="navbar">
+    <Logo text="Joshua Dobrowner" />
+    <div class="nav-items">
+      <NavItem label="Home" href="#home" />
+      <NavItem label="About" href="#about" />
+      <NavItem label="Skills" href="#skills" />
+      <NavItem label="Projects" href="#projects" />
+      <NavItem label="Contact" href="#contact" />
+    </div>
+  </nav>
+</header>
 
 <style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-small) 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-medium);
-    background-color: var(--bg-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-medium);
   }
 
-  .nav-list {
+  .nav-items {
     display: flex;
+    align-items: center;
     gap: var(--spacing-medium);
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
   }
 </style>

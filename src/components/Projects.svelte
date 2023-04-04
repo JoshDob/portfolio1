@@ -1,38 +1,12 @@
 <script>
   import ProjectCard from "./ProjectCard.svelte";
-
-  const projects = [
-    {
-      name: "Project 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem quis eros tempus consequat.",
-      image: "https://via.placeholder.com/500x300/444444/ffffff?text=Project+1",
-      url: "#",
-      techStack: ["HTML", "CSS", "JavaScript"],
-    },
-    {
-      name: "Project 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem quis eros tempus consequat.",
-      image: "https://via.placeholder.com/500x300/444444/ffffff?text=Project+2",
-      url: "#",
-      techStack: ["React", "Node.js", "MongoDB"],
-    },
-    {
-      name: "Project 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem quis eros tempus consequat.",
-      image: "https://via.placeholder.com/500x300/444444/ffffff?text=Project+3",
-      url: "#",
-      techStack: ["Vue", "Firebase", "Tailwind CSS"],
-    },
-  ];
+  import projectsData from "./projectsData.js";
 </script>
 
 <section class="projects">
-  <h2>My Projects</h2>
-  <div class="projects-container">
-    {#each projects as project}
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    {#each projectsData as project}
       <ProjectCard {project} />
     {/each}
   </div>
@@ -46,24 +20,18 @@
     text-align: center;
   }
 
-  .projects h2 {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-medium);
-  }
-
-  .projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-medium);
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-large);
     max-width: var(--max-width);
     margin: 0 auto;
+    padding: var(--spacing-large) var(--spacing-medium);
   }
 
   @media (max-width: 768px) {
-    .projects-container {
-      flex-direction: column;
-      gap: var(--spacing-large);
+    .projects-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

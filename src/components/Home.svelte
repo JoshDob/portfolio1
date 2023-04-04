@@ -1,55 +1,47 @@
 <script>
-  import Background from "./Background.svelte";
+  import AnimatedWave from "./AnimatedWave.svelte";
 </script>
 
-<main>
-  <Background>
-    <div class="home-content container">
-      <h1>Joshua Dobrowner</h1>
-      <p>Full-stack web developer</p>
-    </div></Background
-  >
-</main>
+<section class="home">
+  <AnimatedWave />
+  <div class="container">
+    <h1>Joshua Dobrowner</h1>
+    <p>Full-Stack Web Developer</p>
+  </div>
+</section>
 
 <style>
-  :root {
-    --home-title-font-size: 4rem;
-    --home-subtitle-font-size: 2rem;
-  }
-
-  main {
+  .home {
     position: relative;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  .home-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  .container {
     z-index: 1;
   }
 
-  .home-content h1 {
-    font-family: "Montserrat", sans-serif;
-    font-size: var(--home-title-font-size);
+  h1 {
+    font-size: 3rem;
     margin-bottom: var(--spacing-medium);
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 
-  .home-content p {
-    font-family: "Open Sans", sans-serif;
-    font-size: var(--home-subtitle-font-size);
-    margin-bottom: var(--spacing-large);
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  p {
+    font-size: 1.5rem;
   }
 
   @media (max-width: 768px) {
-    :root {
-      --home-title-font-size: 3rem;
-      --home-subtitle-font-size: 1.8rem;
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
     }
   }
 </style>

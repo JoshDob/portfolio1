@@ -1,26 +1,20 @@
 <script>
-  export let text = "My Site";
+  export let text;
 </script>
 
-<div class="logo-container">
-  <a href="#" class="logo">{text}</a>
-</div>
+<h1 class="logo">{text}</h1>
 
 <style>
-  :root {
-    --logo-font-size: 1.5rem;
-  }
-
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-
   .logo {
-    font-size: var(--logo-font-size);
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 1.8rem;
     color: var(--text-color);
     text-decoration: none;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 1.5rem;
+    }
   }
 </style>

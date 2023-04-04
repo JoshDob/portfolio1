@@ -1,35 +1,28 @@
 <script>
-  export let label;
+  export let text;
   export let href;
+  export let active;
 </script>
 
-<a {href}>
-  <slot>{label}</slot>
-</a>
+<a
+  {href}
+  class="nav-item {active ? 'nav-item-active' : ''}"
+  aria-current={active ? "page" : ""}>{text}</a
+>
 
 <style>
-  a {
+  .nav-item {
+    font-size: 1.2rem;
     color: var(--text-color);
     text-decoration: none;
-    padding: var(--spacing-small) var(--spacing-medium);
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    display: inline-block;
+    padding: var(--spacing-small);
+    margin: 0 var(--spacing-small);
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
   }
 
-  a:hover,
-  a:focus {
-    background-color: var(--bg-color);
-    color: var(--accent-color);
-  }
-
-  a:focus::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: var(--accent-color);
+  .nav-item:hover,
+  .nav-item-active {
+    border-color: var(--accent-color);
   }
 </style>

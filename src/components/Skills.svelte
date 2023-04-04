@@ -1,36 +1,13 @@
-<!-- Skills.svelte -->
 <script>
   import SkillCard from "./SkillCard.svelte";
-
-  const skills = [
-    {
-      name: "HTML",
-      level: "Expert",
-      icon: "fab fa-html5",
-    },
-    {
-      name: "CSS",
-      level: "Expert",
-      icon: "fab fa-css3-alt",
-    },
-    {
-      name: "JavaScript",
-      level: "Advanced",
-      icon: "fab fa-js-square",
-    },
-    // Add more skills as needed
-  ];
+  import skillsData from "../data/skillsData";
 </script>
 
 <section class="skills">
-  <h2>My Skills</h2>
-  <div class="skills-container">
-    {#each skills as skill}
-      <SkillCard
-        skillName={skill.name}
-        skillLevel={skill.level}
-        skillIcon={skill.icon}
-      />
+  <h2 class="section-title">Skills</h2>
+  <div class="skill-cards">
+    {#each skillsData as skill}
+      <SkillCard {skill} />
     {/each}
   </div>
 </section>
@@ -39,16 +16,16 @@
   .skills {
     background-color: var(--bg-color);
     color: var(--text-color);
-    padding: var(--spacing-large) var(--spacing-medium);
+    padding: var(--spacing-large) 0;
     text-align: center;
   }
 
-  .skills-container {
+  .skill-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: var(--spacing-medium);
-    max-width: 1100px;
-    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-medium);
   }
 </style>

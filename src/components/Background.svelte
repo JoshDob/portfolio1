@@ -1,42 +1,33 @@
-<!-- Background.svelte -->
 <script>
-  import AnimatedWave from "./AnimatedWave.svelte";
+  export let backgroundColor = "var(--bg-color)";
+  export let gradientStart = "var(--gradient-start)";
+  export let gradientEnd = "var(--gradient-end)";
 </script>
 
-<AnimatedWave />
-
-<div class="background">
-  <div class="background-color" />
+<div class="background" style="background-color: {backgroundColor};">
+  <div
+    class="gradient"
+    style="background: linear-gradient(135deg, {gradientStart} 0%, {gradientEnd} 100%);"
+  />
 </div>
 
 <style>
-  :root {
-    --gradient-start: #3e3e3e;
-    --gradient-end: #292929;
-    --background-opacity: 0.8;
-  }
-
   .background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -2;
   }
 
-  .background-color {
+  .gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    mix-blend-mode: screen;
-    background-image: linear-gradient(
-      to bottom,
-      var(--gradient-start) 0%,
-      var(--gradient-end) 100%
-    );
-    opacity: var(--background-opacity);
+    opacity: 0.7;
+    z-index: -1;
   }
 </style>

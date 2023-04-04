@@ -1,28 +1,31 @@
 <script>
+  import AnimatedWave from "./AnimatedWave.svelte";
 </script>
 
-<section class="about" id="about">
+<section class="about">
+  <div class="wave-container">
+    <AnimatedWave />
+  </div>
   <div class="container">
     <h2>About Me</h2>
     <div class="about-content">
       <div class="about-text">
         <p>
-          Hello! I'm Joshua Dobrowner, a passionate full-stack web developer
-          with experience in various technologies and a focus on creating
-          efficient, user-friendly web applications. I enjoy tackling new
-          challenges and learning new technologies to improve my skillset.
+          Hi, I'm Joshua Dobrowner, a full-stack web developer with a passion
+          for creating efficient and user-friendly web applications. I have
+          experience in HTML, CSS, JavaScript, and various modern web
+          development frameworks and libraries.
         </p>
         <p>
-          When I'm not coding, I enjoy spending time outdoors, traveling, and
-          trying new foods.
+          When I'm not coding, I enjoy outdoor activities, such as hiking and
+          cycling, as well as playing guitar and exploring new music.
         </p>
       </div>
-      <div class="about-image">
-        <img
-          src="https://via.placeholder.com/300/444444/ffffff?text=Your+Image"
-          alt="Joshua Dobrowner"
-        />
-      </div>
+      <img
+        src="/images/joshua_dobrowner.jpg"
+        alt="Joshua Dobrowner"
+        class="about-image"
+      />
     </div>
   </div>
 </section>
@@ -30,48 +33,49 @@
 <style>
   .about {
     position: relative;
-    padding: var(--spacing-large) 0;
     background-color: var(--bg-color);
     color: var(--text-color);
+    padding: var(--spacing-large) var(--spacing-medium);
+  }
+
+  .wave-container {
+    position: relative;
+    overflow: visible;
   }
 
   .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 var(--spacing-medium);
     text-align: center;
   }
 
   .about-content {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-large);
+    margin-top: var(--spacing-large);
   }
 
   .about-text {
-    font-size: 1.6rem;
-    line-height: 1.5;
+    flex: 1;
     max-width: 600px;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-align: left;
   }
 
   .about-image {
     width: 300px;
     height: 300px;
-    overflow: hidden;
-    border-radius: 50%;
-  }
-
-  .about-image img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
     .about-text {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
     .about-image {

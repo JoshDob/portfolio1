@@ -3,16 +3,16 @@
 </script>
 
 <article class="project-card">
-  <img class="project-card__image" src={project.image} alt={project.name} />
-  <div class="project-card__details">
-    <h3 class="project-card__name">{project.name}</h3>
-    <p class="project-card__description">{project.description}</p>
-    <ul class="project-card__tech-stack">
-      {#each project.techStack as tech}
-        <li class="project-card__tech-stack__item">{tech}</li>
-      {/each}
-    </ul>
-    <a class="project-card__link" href={project.url}>View Project</a>
+  <img src={project.image} alt={project.title} class="project-image" />
+  <div class="project-content">
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-description">{project.description}</p>
+    <div class="project-links">
+      <a href={project.live} target="_blank" rel="noopener noreferrer">Live</a>
+      <a href={project.github} target="_blank" rel="noopener noreferrer"
+        >GitHub</a
+      >
+    </div>
   </div>
 </article>
 
@@ -20,99 +20,51 @@
   .project-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: var(--spacing-large);
-    background-color: var(--bg-color);
-    border-radius: 10px;
+    background-color: var(--card-bg-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
   }
 
-  .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .project-card__image {
+  .project-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
   }
 
-  .project-card__details {
+  .project-content {
     padding: var(--spacing-medium);
   }
 
-  .project-card__name {
-    font-size: 2rem;
-    margin-bottom: var(--spacing-medium);
-  }
-
-  .project-card__description {
+  .project-title {
     font-size: 1.4rem;
-    margin-bottom: var(--spacing-medium);
+    margin-bottom: var(--spacing-small);
   }
 
-  .project-card__tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-small);
-    margin-bottom: var(--spacing-medium);
-  }
-
-  .project-card__tech-stack__item {
+  .project-description {
     font-size: 1.2rem;
-    font-weight: 500;
-    padding: var(--spacing-small) var(--spacing-medium);
-    border-radius: 4px;
-    background-color: var(--primary-color);
-    color: #fff;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-medium);
   }
 
-  .project-card__link {
-    font-size: 1.6rem;
-    padding: var(--spacing-small) var(--spacing-medium);
-    border-radius: 4px;
-    background-color: var(--primary-color);
-    color: #fff;
+  .project-links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .project-links a {
+    font-size: 1.2rem;
+    color: var(--text-color);
     text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    display: inline-block;
   }
 
-  .project-card__link:hover,
-  .project-card__link:focus {
-    background-color: var(--secondary-color);
-  }
-
-  .project-card__link:focus::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: var(--accent-color);
+  .project-links a:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
-    .project-card__name {
-      font-size: 1.8rem;
-    }
-
-    .project-card__description {
-      font-size: 1.2rem;
-    }
-
-    .project-card__tech-stack__item {
-      font-size: 1rem;
-      padding: var(--spacing-small);
-    }
-
-    .project-card__link {
-      font-size: 1.4rem;
-      padding: var(--spacing-small) var(--spacing-medium);
+    .project-image {
+      height: 150px;
     }
   }
 </style>

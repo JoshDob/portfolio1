@@ -1,24 +1,26 @@
-<!-- Footer.svelte -->
 <footer>
   <div class="container">
-    <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+    <p class="copyright">
+      © {new Date().getFullYear()} Joshua Dobrowner. All rights reserved.
+    </p>
   </div>
 </footer>
 
 <style>
   footer {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: var(--spacing-medium);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: var(--spacing-large) var(--spacing-medium);
+    text-align: center;
   }
 
   .container {
-    display: flex;
-    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
-  footer p {
-    font-size: 1.2rem;
-    margin: 0;
+  .copyright {
+    font-size: 1rem;
+    margin-top: var(--spacing-medium);
   }
 </style>
