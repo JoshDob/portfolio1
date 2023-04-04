@@ -1,9 +1,10 @@
 <script>
   import AnimatedWave from "./AnimatedWave.svelte";
+  import Hero from "../components/Hero.svelte";
 </script>
 
 <section class="home">
-  <AnimatedWave />
+  <Hero />
   <div class="container">
     <h1>Joshua Dobrowner</h1>
     <p>Full-Stack Web Developer</p>
