@@ -1,37 +1,38 @@
 <script>
   import ProjectCard from "./ProjectCard.svelte";
-  import projectsData from "./projectsData.js";
+  import projectsData from "../data/projectsData.js";
 </script>
 
 <section class="projects">
-  <h2 class="section-title">Projects</h2>
-  <div class="projects-grid">
-    {#each projectsData as project}
-      <ProjectCard {project} />
-    {/each}
+  <div class="container">
+    <h2 class="section-title">My Projects</h2>
+    <div class="projects__grid">
+      {#each projectsData as project}
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          imageSrc={project.imageSrc}
+          link={project.link}
+        />
+      {/each}
+    </div>
   </div>
 </section>
 
 <style>
   .projects {
-    background-color: var(--bg-color);
-    color: var(--text-color);
     padding: var(--spacing-large) 0;
-    text-align: center;
   }
 
-  .projects-grid {
+  .projects__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-large);
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: var(--spacing-large) var(--spacing-medium);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
-  @media (max-width: 768px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    .projects__grid {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>

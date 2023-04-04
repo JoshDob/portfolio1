@@ -1,70 +1,59 @@
 <script>
-  export let project;
+  export let title;
+  export let description;
+  export let imageSrc;
+  export let link;
 </script>
 
-<article class="project-card">
-  <img src={project.image} alt={project.title} class="project-image" />
-  <div class="project-content">
-    <h3 class="project-title">{project.title}</h3>
-    <p class="project-description">{project.description}</p>
-    <div class="project-links">
-      <a href={project.live} target="_blank" rel="noopener noreferrer">Live</a>
-      <a href={project.github} target="_blank" rel="noopener noreferrer"
-        >GitHub</a
-      >
-    </div>
+<div class="project-card">
+  <img src={imageSrc} alt="Project image" class="project-card__image" />
+  <div class="project-card__info">
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__description">{description}</p>
+    <a href={link} class="project-card__link">View Project</a>
   </div>
-</article>
+</div>
 
 <style>
   .project-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    background-color: var(--card-bg-color);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-  }
-
-  .project-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .project-content {
-    padding: var(--spacing-medium);
-  }
-
-  .project-title {
-    font-size: 1.4rem;
-    margin-bottom: var(--spacing-small);
-  }
-
-  .project-description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: var(--spacing-medium);
-  }
-
-  .project-links {
-    display: flex;
     justify-content: space-between;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
   }
 
-  .project-links a {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    text-decoration: none;
+  .project-card__image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
   }
 
-  .project-links a:hover {
-    text-decoration: underline;
+  .project-card__info {
+    padding: 1rem;
   }
 
-  @media (max-width: 768px) {
-    .project-image {
-      height: 150px;
-    }
+  .project-card__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card__description {
+    margin-bottom: 1rem;
+  }
+
+  .project-card__link {
+    color: var(--accent-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .project-card__link:hover {
+    color: var(--primary-color);
   }
 </style>
