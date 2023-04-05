@@ -1,49 +1,25 @@
 <script>
 </script>
 
-<section class="about">
-  <div class="about-content">
-    <div class="about-text">
-      <p>
-        Hi, I'm Joshua Dobrowner, a full-stack web developer with a passion for
-        creating efficient and user-friendly web applications. I have experience
-        in HTML, CSS, JavaScript, and various modern web development frameworks
-        and libraries.
-      </p>
-      <p>
-        When I'm not coding, I enjoy outdoor activities, such as hiking and
-        cycling, as well as playing guitar and exploring new music.
-      </p>
-    </div>
-    <img
-      src="https://cdn.discordapp.com/attachments/1017940650907422860/1092961273764917299/proficon1j.png"
-      alt="Joshua Dobrowner"
-      class="about-image"
-    />
-  </div>
-</section>
+<div class="section-content section">
+  <h1>About</h1>
+  <p>Your about section content goes here...</p>
+  <img
+    src="https://cdn.discordapp.com/attachments/1017940650907422860/1092961273764917299/proficon1j.png"
+    alt="Joshua Dobrowner"
+    class="about-image"
+  />
+</div>
 
 <style>
-  .about {
+  .section-content {
     position: relative;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-
-  .about-content {
+    padding: var(--spacing-medium);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    gap: var(--spacing-large);
-    margin-top: var(--spacing-large);
-  }
-
-  .about-text {
-    flex: 1;
-    max-width: 600px;
-    font-size: 1.4rem;
-    line-height: 1.6;
-    text-align: left;
+    align-items: center;
+    text-align: center;
   }
 
   .about-image {
@@ -54,14 +30,8 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
 
-  @media (max-width: 768px) {
-    .about-text {
-      font-size: 1.2rem;
-    }
-
-    .about-image {
-      width: 250px;
-      height: 250px;
-    }
+  .about-image {
+    width: 250px;
+    height: 250px;
   }
 </style>

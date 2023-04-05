@@ -1,89 +1,95 @@
 <script>
+  import { onMount, onDestroy } from "svelte";
   import Hero from "../components/Hero.svelte";
   import About from "./About.svelte";
   import Skills from "./Skills.svelte";
   import Projects from "./Projects.svelte";
 
-  let scrollY = 0;
-  let sections;
+  let home;
 
-  function handleScroll(event) {
-    scrollY = event.target.scrollTop;
+  onMount(() => {
+    home.addEventListener("scroll", handleScroll);
+  });
+
+  onDestroy(() => {
+    home.removeEventListener("scroll", handleScroll);
+  });
+
+  function handleScroll() {
+    const scrollY = home.scrollTop;
+    const windowHeight = home.clientHeight;
+
+    sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionBottom = sectionTop + sectionHeight;
+      const sectionInView =
+        scrollY + windowHeight * 0.75 > sectionTop && scrollY < sectionBottom;
+
+      if (sectionInView) {
+        const translateY =
+          ((scrollY + windowHeight * 0.75 - sectionTop) / windowHeight) * 100;
+        section.style.transform = `translateY(${100 - translateY}%)`;
+      } else {
+        section.style.transform = "translateY(100%)";
+      }
+    });
   }
-
-  function isVisible(section) {
-    return scrollY > section.offsetTop - section.offsetHeight;
-  }
-
-  sections = [
-    { component: About, offsetTop: 0, offsetHeight: 0 },
-    { component: Projects, offsetTop: 0, offsetHeight: 0 },
-    { component: Skills, offsetTop: 0, offsetHeight: 0 },
-  ];
 </script>
 
-<section class="home">
-  <div class="fixed-container" on:scroll={handleScroll}>
-    <Hero />
-    {#each sections as section}
-      {#if isVisible(section)}
-        <section>
-          <svelte:component this={section.component} />
-        </section>
-      {/if}
-    {/each}
+<div class="hero-wrapper">
+  <Hero />
+</div>
+<div class="home" bind:this={home}>
+  <div class="sections-wrapper">
+    <About />
+    <Projects />
+    <Skills />
   </div>
-</section>
+</div>
 
 <style>
-  .home {
-    position: relative;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .fixed-container {
+  .hero-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
   }
 
-  section {
+  .home {
     position: absolute;
     top: 0;
-    left: 100%;
+    left: 0;
     width: 100%;
-    transition: left 0.5s ease;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
-  .container {
-    z-index: 0;
+  .sections-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-medium);
-  }
-
-  p {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-    }
+  .section {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
 </style>

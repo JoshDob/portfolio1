@@ -3,22 +3,23 @@
   import skillsData from "../data/skillsData";
 </script>
 
-<section class="skills">
-  <div class="skills-content">
-    <h2 class="section-title">Skills</h2>
-    <div class="skill-cards">
-      {#each skillsData as skill}
-        <SkillCard {skill} />
-      {/each}
-    </div>
+<div class="section-content section">
+  <h2 class="section-title">Skills</h2>
+  <div class="skill-cards">
+    {#each skillsData as skill}
+      <SkillCard {skill} />
+    {/each}
   </div>
-</section>
+</div>
 
 <style>
-  .skills {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: var(--spacing-large) 0;
+  .section-content {
+    position: relative;
+    padding: var(--spacing-medium);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
   }
 

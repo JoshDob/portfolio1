@@ -1,81 +1,64 @@
 <script>
-  import { onMount } from "svelte";
-  import NavItem from "./NavItem.svelte";
-  import Logo from "./Logo.svelte";
+  import { writable } from "svelte/store";
+  const menuOpen = writable(false);
 
-  let scrolled = false;
-
-  onMount(() => {
-    const handleScroll = () => {
-      scrolled = window.scrollY > 50;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
-
-  const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: "smooth" });
-  };
+  function toggleMenu() {
+    $menuOpen = !$menuOpen;
+  }
 </script>
 
-<nav class="navbar" class:scrolled>
-  <Logo />
-  <div class="nav-items">
-    <NavItem>
-      <a href="#home" on:click={() => scrollTo("home")}>Home</a>
-    </NavItem>
-    <NavItem>
-      <a href="#about" on:click={() => scrollTo("about")}>About</a>
-    </NavItem>
-    <NavItem>
-      <a href="#skills" on:click={() => scrollTo("skills")}>Skills</a>
-    </NavItem>
-    <NavItem>
-      <a href="#projects" on:click={() => scrollTo("projects")}>Projects</a>
-    </NavItem>
-    <NavItem>
-      <a href="#contact" on:click={() => scrollTo("contact")}>Contact</a>
-    </NavItem>
+<div class="nav-bar">
+  <div class="logo" on:click={toggleMenu}>
+    <img src="/logo.svg" alt="Logo" />
+    <div class="line" />
   </div>
-</nav>
+  {#if $menuOpen}
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  {/if}
+</div>
 
 <style>
-  nav {
-    /* Add a semi-transparent background */
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-
-    /* Add smooth transitions */
-    transition: all 0.3s ease;
-  }
-
-  nav:hover {
-    /* Make the background more opaque when hovering */
-    background: rgba(0, 0, 0, 0.8);
-  }
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.66rem 1.3rem;
+  .nav-bar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 33%;
-    width: 9%;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .nav-items {
+    z-index: 10;
+    padding: 1rem;
     display: flex;
-    gap: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: background-color 0.3s ease-in-out;
+  .logo {
+    cursor: pointer;
+  }
+
+  .line {
+    width: 50%;
+    height: 2px;
+    background-color: currentColor;
+    margin-top: 0.2rem;
+  }
+
+  nav {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+
+  a:hover {
+    color: var(--accent-color);
   }
 </style>
