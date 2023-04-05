@@ -1,28 +1,20 @@
 <script>
-  export let text;
-  export let href;
-  export let active;
+  export let onClick;
 </script>
 
-<a
-  {href}
-  class="nav-item {active ? 'nav-item-active' : ''}"
-  aria-current={active ? "page" : ""}>{text}</a
->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="nav-item" on:click={onClick}>
+  <slot />
+</div>
 
 <style>
   .nav-item {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    text-decoration: none;
-    padding: var(--spacing-small);
-    margin: 0 var(--spacing-small);
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
   }
 
-  .nav-item:hover,
-  .nav-item-active {
-    border-color: var(--accent-color);
+  .nav-item:hover {
+    color: var(--accent-color);
   }
 </style>
