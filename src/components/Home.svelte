@@ -1,15 +1,16 @@
 <script>
-  import AnimatedWave from "./AnimatedWave.svelte";
   import Hero from "../components/Hero.svelte";
+  import About from "./About.svelte";
+  import Skills from "./Skills.svelte";
+  import Projects from "./Projects.svelte";
 </script>
 
 <section class="home">
   <Hero />
-  <div class="container">
-    <h1>Joshua Dobrowner</h1>
-    <p>Full-Stack Web Developer</p>
-  </div>
 </section>
+<About />
+<Projects />
+<Skills />
 
 <style>
   .home {
@@ -24,7 +25,7 @@
   }
 
   .container {
-    z-index: 1;
+    z-index: 0;
   }
 
   h1 {

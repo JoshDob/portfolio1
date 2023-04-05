@@ -4,11 +4,13 @@
 </script>
 
 <section class="skills">
-  <h2 class="section-title">Skills</h2>
-  <div class="skill-cards">
-    {#each skillsData as skill}
-      <SkillCard {skill} />
-    {/each}
+  <div class="skills-content">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-cards">
+      {#each skillsData as skill}
+        <SkillCard {skill} />
+      {/each}
+    </div>
   </div>
 </section>
 

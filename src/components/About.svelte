@@ -1,32 +1,25 @@
 <script>
-  import AnimatedWave from "./AnimatedWave.svelte";
 </script>
 
 <section class="about">
-  <div class="wave-container">
-    <AnimatedWave />
-  </div>
-  <div class="container">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <p>
-          Hi, I'm Joshua Dobrowner, a full-stack web developer with a passion
-          for creating efficient and user-friendly web applications. I have
-          experience in HTML, CSS, JavaScript, and various modern web
-          development frameworks and libraries.
-        </p>
-        <p>
-          When I'm not coding, I enjoy outdoor activities, such as hiking and
-          cycling, as well as playing guitar and exploring new music.
-        </p>
-      </div>
-      <img
-        src="/images/joshua_dobrowner.jpg"
-        alt="Joshua Dobrowner"
-        class="about-image"
-      />
+  <div class="about-content">
+    <div class="about-text">
+      <p>
+        Hi, I'm Joshua Dobrowner, a full-stack web developer with a passion for
+        creating efficient and user-friendly web applications. I have experience
+        in HTML, CSS, JavaScript, and various modern web development frameworks
+        and libraries.
+      </p>
+      <p>
+        When I'm not coding, I enjoy outdoor activities, such as hiking and
+        cycling, as well as playing guitar and exploring new music.
+      </p>
     </div>
+    <img
+      src="https://cdn.discordapp.com/attachments/1017940650907422860/1092961273764917299/proficon1j.png"
+      alt="Joshua Dobrowner"
+      class="about-image"
+    />
   </div>
 </section>
 
@@ -35,18 +28,6 @@
     position: relative;
     background-color: var(--bg-color);
     color: var(--text-color);
-    padding: var(--spacing-large) var(--spacing-medium);
-  }
-
-  .wave-container {
-    position: relative;
-    overflow: visible;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
   }
 
   .about-content {

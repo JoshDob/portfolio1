@@ -4,17 +4,19 @@
 </script>
 
 <section class="projects">
-  <div class="container">
-    <h2 class="section-title">My Projects</h2>
-    <div class="projects__grid">
-      {#each projectsData as project}
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          imageSrc={project.imageSrc}
-          link={project.link}
-        />
-      {/each}
+  <div class="projects-content">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects__grid">
+        {#each projectsData as project}
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            imageSrc={project.imageSrc}
+            link={project.link}
+          />
+        {/each}
+      </div>
     </div>
   </div>
 </section>

@@ -10,8 +10,5 @@
 
 <NavBar />
 <Home />
-<About />
-<Skills />
-<Projects />
 <Contact />
 <Footer />
