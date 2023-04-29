@@ -20,7 +20,7 @@
 }
 
 /* Global styles */
-main html,
+html,
 body {
   margin: 0;
   padding: 0;
@@ -87,52 +87,14 @@ img {
   margin-bottom: var(--spacing-medium);
 }
 
-/* Layout */
-section {
-  margin-bottom: var(--spacing-large);
+/* Contact and Footer */
+.contact,
+.footer {
+  padding: var(--spacing-medium) 0;
+  text-align: center;
 }
 
-/* Shared styles for content sections */
-.about-content {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  width: 80%;
-  max-width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background: rgba(255, 253, 240, 0.8);
-  padding: var(--spacing-medium);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  display: flexbox; /* Initially hidden */
-}
-
-.projects-content {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  width: 80%;
-  max-width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background: rgba(255, 253, 240, 0.8);
-  padding: var(--spacing-medium);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  display: flexbox; /* Initially hidden */
-}
-.skills-content {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  width: 80%;
-  max-width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background: rgba(255, 253, 240, 0.8);
-  padding: var(--spacing-medium);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  display: flexbox; /* Initially hidden */
+.footer {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
 }

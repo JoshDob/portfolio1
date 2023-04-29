@@ -53,14 +53,14 @@
         attributeName="x"
         from="500"
         to="-500"
-        dur="20s"
+        dur="40s"
         repeatCount="indefinite"
       />
       <animate
         attributeName="y"
         from="500"
         to="-500"
-        dur="25s"
+        dur="45s"
         repeatCount="indefinite"
       />
     </rect>
